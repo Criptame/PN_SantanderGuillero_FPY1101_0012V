@@ -13,12 +13,22 @@ trabajadores = [
 ]
 
 
-nombre = int(input("Digite su nombre: "))
+nombre = input("Escriba su nombre: ")  
+Rut = input("Digite su Rut: ") 
 
-print("Bienvenido al menu de Opciones {nombre}")
-print("1. Asignar sueldos aleatorios")
-print("2. Clasificar sueldos")
-print("3. Ver estadísticas.")
-print("4. Reporte de sueldos")
-print("5. Salir del programa")
+print(f"Bienvenido al menu de Opciones {nombre}")
+print("1. Asignar sueldos aleatorios y mostar")
+print("2. Clasificar sueldos ")
+print("3. Ver estadísticas y mostar")
+print("4. Reporte de sueldos y mostar")
+print("5. Salir del programa y mostar")
 
+
+while True:
+    opcion = int(input("Ingrese una opción: "))
+    if opcion == 1:
+        num_accounts = int(input("Ingrese el número de cuentas: "))
+        balances = generate_random_balances(num_accounts)
+        print(f"Balances generados aleatorios para {num_accounts} cuentas:")
+        for i, balance in enumerate(balances, start=1):
+            print(f"Cuenta {i}: ${balance}")
