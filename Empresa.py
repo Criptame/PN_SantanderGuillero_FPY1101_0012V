@@ -1,3 +1,4 @@
+from ast import main
 import random
 import csv
 
@@ -39,7 +40,7 @@ while True:
         print("Lista de salarios ordenados de mayor a menor:")
         for trabajador, salario in sorted_salarios:
             print(f"{trabajador}: ${salario}")
-
+            
     elif opcion == '3':
         total_salarios = sum(diccionario_salarios.values())
         promedio_salarios = total_salarios / len(trabajadores)
@@ -59,8 +60,11 @@ while True:
         print("Reporte de salarios generado correctamente.")
 
     elif opcion == '5':
-        print("Saliendo del programa...")
+        print("Ojala este programa alla sido de ayuda {nombre}, {Rut}")
         break 
 
     else:
         print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
+
+if __name__ == '__main__':
+    main()
