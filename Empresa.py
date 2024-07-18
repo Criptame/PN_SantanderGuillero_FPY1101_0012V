@@ -17,6 +17,18 @@ def actualizar_sueldos():
     salarios = generate_random_balances(len(trabajadores))
     diccionario_salarios = dict(zip(trabajadores, salarios))
 
+def calcular_descuento_salud(sueldo):
+    return sueldo * 0.07
+
+def calcular_descuento_afp(sueldo):
+    return sueldo * 0.12
+
+def calcular_sueldo_liquido(sueldo_base):
+    descuento_salud = calcular_descuento_salud(sueldo_base)
+    descuento_afp = calcular_descuento_afp(sueldo_base)
+    sueldo_liquido = sueldo_base - descuento_salud - descuento_afp
+    return sueldo_liquido, descuento_salud, descuento_afp
+
 nombre = input("Escriba su nombre: ")
 Rut = input("Digite su Rut: ")
 
@@ -24,11 +36,12 @@ print(f"Bienvenido al menu de Opciones {nombre}")
 print("1. Asignar sueldos aleatorios a trabajadores")
 print("2. Clasificar sueldos, Entre mayor, menor o igual ")
 print("3. Ver estadísticas ")
-print("4. Reporte de sueldos")
-print("5. Salir del programa")
+print("4. Reporte de salarios")
+print("5. Calcular sueldo líquido y aplicar descuentos")
+print("6. Salir del programa")
 
 while True:
-    opcion = input("Seleccione una opción (1-5): ")
+    opcion = input("Seleccione una opción (1-6): ")
 
     if opcion == '1':
         actualizar_sueldos()
@@ -84,8 +97,15 @@ while True:
         print("Reporte de salarios generado correctamente.")
 
     elif opcion == '5':
+        print("Calculando sueldos líquidos y aplicando descuentos...")
+        print("Nombre empleado Sueldo Base Descuento Salud Descuento AFP Sueldo Líquido")
+        for trabajador, sueldo_base in diccionario_salarios.items():
+            sueldo_liquido, descuento_salud, descuento_afp = calcular_sueldo_liquido(sueldo_base)
+            print(f"{trabajador} ${sueldo_base} ${descuento_salud} ${descuento_afp} ${sueldo_liquido}")
+
+    elif opcion == '6':
         print(f"Hasta luego, {nombre} ({Rut})")
         break
 
     else:
-        print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
+        print("Opción no válida. Por favor, seleccione una opción del 1 al 6.")
