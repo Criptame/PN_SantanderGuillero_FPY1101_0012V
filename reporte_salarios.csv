@@ -1,6 +1,6 @@
-Trabajador,Sueldo Base,Descuento Salud,Descuento AFP,Sueldo Líquido
-Juan Pérez,2055133,143859.31000000003,246615.96,1664657.73
-María García,1903459,133242.13,228415.08,1541801.79
-Pedro Soto,39356,2754.92,4722.72,31878.36
-Isabel Gómez,2395182,167662.74000000002,287421.83999999997,1940097.42
-Miguel Sánchez,138510,9695.7,16621.2,112193.1
+Trabajador,Salario
+Juan Pérez,1595963
+María García,834938
+Pedro Soto,1785600
+Isabel Gómez,378586
+Miguel Sánchez,2251078
