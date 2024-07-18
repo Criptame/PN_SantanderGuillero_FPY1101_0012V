@@ -1,14 +1,12 @@
-from ast import main
 import random
 import csv
 
 trabajadores = [
-    "Jose Alvaro",
-    "Maria Isabel",
-    "Pedro Pablo",
-    "Juan Ignacio",
-    "Antonio José",
-    "Sofia Maria",
+    "Juan Pérez",
+    "María García",
+    "Pedro Soto",
+    "Isabel Gómez",
+    "Miguel Sánchez",
 ]
 
 def generate_random_balances(num_accounts):
@@ -36,11 +34,39 @@ while True:
             print(f"{trabajador}: ${salario}")
 
     elif opcion == '2':
-        sorted_salarios = sorted(diccionario_salarios.items(), key=lambda x: x[1], reverse=True)
-        print("Lista de salarios ordenados de mayor a menor:")
-        for trabajador, salario in sorted_salarios:
-            print(f"{trabajador}: ${salario}")
-            
+        # Clasificar sueldos según las categorías especificadas
+        menores_800k = []
+        entre_800k_2m = []
+        superiores_2m = []
+
+        for trabajador, salario in diccionario_salarios.items():
+            if salario < 800000:
+                menores_800k.append((trabajador, salario))
+            elif 800000 <= salario <= 2000000:
+                entre_800k_2m.append((trabajador, salario))
+            elif salario > 2000000:
+                superiores_2m.append((trabajador, salario))
+
+        # Mostrar resultados
+        print(f"Sueldos menores a $800,000 TOTAL: {len(menores_800k)}")
+        print("Nombre empleado Sueldo")
+        for nombre, sueldo in menores_800k:
+            print(f"{nombre} ${sueldo}")
+
+        print(f"\nSueldos entre $800,000 y $2,000,000 TOTAL: {len(entre_800k_2m)}")
+        print("Nombre empleado Sueldo")
+        for nombre, sueldo in entre_800k_2m:
+            print(f"{nombre} ${sueldo}")
+
+        print(f"\nSueldos superiores a $2,000,000 TOTAL: {len(superiores_2m)}")
+        print("Nombre empleado Sueldo")
+        for nombre, sueldo in superiores_2m:
+            print(f"{nombre} ${sueldo}")
+
+        # Mostrar el total de sueldos
+        total_sueldos = sum(diccionario_salarios.values())
+        print(f"\nTOTAL SUELDOS: ${total_sueldos}")
+
     elif opcion == '3':
         total_salarios = sum(diccionario_salarios.values())
         promedio_salarios = total_salarios / len(trabajadores)
@@ -60,11 +86,8 @@ while True:
         print("Reporte de salarios generado correctamente.")
 
     elif opcion == '5':
-        print("Ojala este programa alla sido de ayuda {nombre}, {Rut}")
+        print("Ojala allamos sido de ayuda ",  nombre, Rut)
         break 
 
     else:
         print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
-
-if __name__ == '__main__':
-    main()
