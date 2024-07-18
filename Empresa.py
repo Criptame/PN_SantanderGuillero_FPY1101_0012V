@@ -84,7 +84,7 @@ while True:
         print("Reporte de salarios generado correctamente.")
 
     elif opcion == '5':
-        print("Ojala alla sido de ayuda, ", nombre, Rut)
+        print(f"Hasta luego, {nombre} ({Rut})")
         break
 
     else:
