@@ -112,7 +112,7 @@ while True:
             print(f"{trabajador} ${sueldo_base} ${descuento_salud} ${descuento_afp} ${sueldo_liquido}")
 
     elif opcion == '6':
-        print("Saliendo del programa")
+        print("Saliendo del programa, Ojala alla sido de ayuda")
         print("Desarrolado por", nombre)
         print("Rut", Rut)
         break
