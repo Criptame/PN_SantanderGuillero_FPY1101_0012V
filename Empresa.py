@@ -12,9 +12,10 @@ trabajadores = [
 def generate_random_balances(num_accounts):
     return [random.randint(30000, 2500000) for _ in range(num_accounts)]
 
-salarios = generate_random_balances(len(trabajadores))
-
-diccionario_salarios = dict(zip(trabajadores, salarios))
+def actualizar_sueldos():
+    global diccionario_salarios
+    salarios = generate_random_balances(len(trabajadores))
+    diccionario_salarios = dict(zip(trabajadores, salarios))
 
 nombre = input("Escriba su nombre: ")
 Rut = input("Digite su Rut: ")
@@ -30,11 +31,10 @@ while True:
     opcion = input("Seleccione una opción (1-5): ")
 
     if opcion == '1':
-        for trabajador, salario in diccionario_salarios.items():
-            print(f"{trabajador}: ${salario}")
+        actualizar_sueldos()
+        print("Sueldos actualizados aleatoriamente.")
 
     elif opcion == '2':
-        # Clasificar sueldos según las categorías especificadas
         menores_800k = []
         entre_800k_2m = []
         superiores_2m = []
@@ -47,7 +47,6 @@ while True:
             elif salario > 2000000:
                 superiores_2m.append((trabajador, salario))
 
-        # Mostrar resultados
         print(f"Sueldos menores a $800,000 TOTAL: {len(menores_800k)}")
         print("Nombre empleado Sueldo")
         for nombre, sueldo in menores_800k:
@@ -63,7 +62,6 @@ while True:
         for nombre, sueldo in superiores_2m:
             print(f"{nombre} ${sueldo}")
 
-        # Mostrar el total de sueldos
         total_sueldos = sum(diccionario_salarios.values())
         print(f"\nTOTAL SUELDOS: ${total_sueldos}")
 
@@ -86,8 +84,8 @@ while True:
         print("Reporte de salarios generado correctamente.")
 
     elif opcion == '5':
-        print("Ojala allamos sido de ayuda ",  nombre, Rut)
-        break 
+        print("Ojala alla sido de ayuda, ", nombre, Rut)
+        break
 
     else:
         print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
