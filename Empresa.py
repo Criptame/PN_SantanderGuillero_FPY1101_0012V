@@ -1,5 +1,6 @@
 import random
 import csv
+import math
 
 trabajadores = [
     "Juan Pérez",
@@ -79,14 +80,21 @@ while True:
         print(f"\nTOTAL SUELDOS: ${total_sueldos}")
 
     elif opcion == '3':
-        total_salarios = sum(diccionario_salarios.values())
-        promedio_salarios = total_salarios / len(trabajadores)
-        salario_maximo = max(diccionario_salarios.values())
-        salario_minimo = min(diccionario_salarios.values())
+        if not diccionario_salarios:
+            print("No hay datos de sueldos. Por favor, asigna sueldos primero (opción 1).")
+            continue
         
-        print(f"Promedio de salarios: ${promedio_salarios}")
-        print(f"Salario máximo: ${salario_maximo}")
-        print(f"Salario mínimo: ${salario_minimo}")
+        sueldos = list(diccionario_salarios.values())
+        
+        sueldo_maximo = max(sueldos)
+        sueldo_minimo = min(sueldos)
+        promedio_sueldos = sum(sueldos) / len(sueldos)
+        media_geometrica = math.prod(sueldos) ** (1 / len(sueldos))
+
+        print(f"Sueldo más alto: ${sueldo_maximo}")
+        print(f"Sueldo más bajo: ${sueldo_minimo}")
+        print(f"Promedio de sueldos: ${promedio_sueldos}")
+        print(f"Media geométrica de sueldos: ${media_geometrica}")
 
     elif opcion == '4':
         with open('reporte_salarios.csv', 'w', newline='') as file:
@@ -104,7 +112,9 @@ while True:
             print(f"{trabajador} ${sueldo_base} ${descuento_salud} ${descuento_afp} ${sueldo_liquido}")
 
     elif opcion == '6':
-        print(f"Hasta luego, {nombre} ({Rut})")
+        print("Saliendo del programa")
+        print("Desarrolado por", nombre)
+        print("Rut", Rut)
         break
 
     else:
